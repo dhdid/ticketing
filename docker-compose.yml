@@ -1,0 +1,27 @@
+services:
+  spring-boot:
+    container_name: spring-boot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - '8000:8080'
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: mysql
+    image: 'mysql:8.0'
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - '3306:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
