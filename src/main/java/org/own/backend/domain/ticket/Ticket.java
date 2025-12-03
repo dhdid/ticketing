@@ -39,4 +39,11 @@ public class Ticket {
 
     @OneToOne(mappedBy = "ticket")
     private Reservation reservation;
+
+    public void reserve() {
+        if (this.status == Status.SOLD) {
+            throw new IllegalStateException("이미 예약된 좌석입니다.");
+        }
+        this.status = Status.SOLD;
+    }
 }

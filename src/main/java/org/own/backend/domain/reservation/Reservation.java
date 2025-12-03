@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.own.backend.domain.ticket.Ticket;
@@ -29,4 +30,11 @@ public class Reservation {
 
     @OneToOne
     private Ticket ticket;
+
+    @Builder
+    public Reservation(Ticket ticket, LocalDateTime createdAt) {
+        this.ticket = ticket;
+        this.createdAt = createdAt;
+    }
+
 }

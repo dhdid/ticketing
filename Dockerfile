@@ -17,7 +17,7 @@ FROM eclipse-temurin:21-jdk
 
 RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
-
 COPY --from=builder /app/build/libs/*.jar /app/app.jar
+
 
 ENTRYPOINT ["java","-jar","/app/app.jar"]
